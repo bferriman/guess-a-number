@@ -92,8 +92,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   confirmOutput: {
-    width: 300,
-    maxWidth: "80%",
     alignItems: "center",
     marginTop: 20
   },
