@@ -35,8 +35,6 @@ const StartGameScreen = props => {
     Keyboard.dismiss();
   };
 
-  const startHandler = () => {};
-
   let confirmedOutput;
 
   if (confirmed) {
@@ -44,7 +42,7 @@ const StartGameScreen = props => {
       <Card style={styles.confirmOutput}>
         <Text>Your Number:</Text>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <View style={styles.button}><Button title="Start" onPress={startHandler} color={Colors.primary} /></View>
+        <View style={styles.button}><Button title="Start" onPress={() => props.onStartGame(selectedNumber)} color={Colors.primary} /></View>
       </Card>
     );
   }
