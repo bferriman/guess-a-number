@@ -17,7 +17,7 @@ const getRandomBetween = (min, max, exclude) => {
 
 const GameScreen = props => {
   const [currentGuess, setCurrentGuess] = useState(getRandomBetween(0, 100, props.userChoice));
-  const [numGuesses, setNumGuesses] = useState(0);
+  const [numGuesses, setNumGuesses] = useState(1);
   const minBound = useRef(1);
   const maxBound = useRef(100);
 
