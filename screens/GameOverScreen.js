@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, Button, Image } from "react-native";
+
 import BodyText from "../components/BodyText";
 import TitleText from "../components/TitleText";
+import Colors from "../constants/colors";
 
 const GameOverScreen = props => {
   return (
@@ -16,8 +18,11 @@ const GameOverScreen = props => {
           // fadeDuration={500}  //specify num of ms over which image fades in on first load
         />
       </View>
-      <BodyText>Number of rounds: {props.numRounds}</BodyText>
-      <BodyText>Number was: {props.answer}</BodyText>
+      <View style={styles.resultContainer}>
+        <BodyText style={styles.resultText}>
+          Your phone needed <Text style={styles.highlight}>{props.numRounds}</Text> rounds to guess the number <Text style={styles.highlight}>{props.answer}</Text>.
+        </BodyText>
+      </View>
       <Button title="NEW GAME" onPress={props.onRestart} />
     </View>
   );
@@ -41,6 +46,18 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%"
+  },
+  resultContainer: {
+    marginHorizontal: 50,
+    marginVertical: 15
+  },
+  resultText: {
+    textAlign: "center",
+    fontSize: 20
+  },
+  highlight: {
+    color: Colors.accent,
+    fontFamily: "open-sans-bold"
   }
 });
 

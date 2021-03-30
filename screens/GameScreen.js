@@ -4,7 +4,6 @@ import { View, Text, StyleSheet, Button, Alert } from "react-native";
 import NumberContainer from "../components/NumberContainer";
 import Card from "../components/Card";
 import BodyText from "../components/BodyText";
-import TitleText from "../components/TitleText";
 
 const getRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
