@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect, componentDidUpdate } from "react";
-import { View, Text, StyleSheet, Button, Alert } from "react-native";
+import React, { useState, useRef, useEffect } from "react";
+import { View, StyleSheet, Alert } from "react-native";
 
 import NumberContainer from "../components/NumberContainer";
 import Card from "../components/Card";
