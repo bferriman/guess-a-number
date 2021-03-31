@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import NumberContainer from "../components/NumberContainer";
 import Card from "../components/Card";
-import BodyText from "../components/BodyText";
+import TitleText from "../components/TitleText";
 import MainButton from "../components/MainButton";
 
 const getRandomBetween = (min, max, exclude) => {
@@ -50,7 +50,7 @@ const GameScreen = props => {
 
   return (
     <View style={styles.screen}>
-      <BodyText>Opponent's Guess</BodyText>
+      <TitleText>Opponent's Guess</TitleText>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
         <MainButton onPress={guessHandler.bind(this, "lower")}>
