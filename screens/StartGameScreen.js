@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Button, TouchableWithoutFeedback, Keyboard, Alert, Dimensions, ScrollView, KeyboardAvoidingView } from "react-native";
 
 import Card from "../components/Card";
@@ -15,6 +15,8 @@ const StartGameScreen = props => {
   const [enteredValue, setEnteredValue] = useState("");
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
+  const [buttonWidth, setButtonWidth] = useState(Dimensions.get("window").width / 4);
+
 
   const inputHandler = inputText => {
     //set value, using reg expression to replace any non-number characters with an empty string
@@ -25,6 +27,17 @@ const StartGameScreen = props => {
     setEnteredValue("");
     setConfirmed(false);
   };
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setButtonWidth(Dimensions.get("window").width / 4);
+    };
+  
+    Dimensions.addEventListener("change", updateLayout);
+    return () => {
+      Dimensions.removeEventListener("change", updateLayout);
+    };
+  });
 
   const confirmHandler = () => {
     const chosenNumber = parseInt(enteredValue);
@@ -71,8 +84,8 @@ const StartGameScreen = props => {
                 value={enteredValue}
               />
               <View style={styles.buttonContainer}>
-                <View style={styles.button}><Button title="Reset" onPress={resetHandler} color={Colors.accent} /></View>
-                <View style={styles.button}><Button title="Confirm" onPress={confirmHandler} color={Colors.primary} /></View>
+                <View style={{width: buttonWidth}}><Button title="Reset" onPress={resetHandler} color={Colors.accent} /></View>
+                <View style={{width: buttonWidth}}><Button title="Confirm" onPress={confirmHandler} color={Colors.primary} /></View>
               </View>
             </Card>
             {confirmedOutput}
@@ -108,10 +121,10 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 15
   },
-  button: {
-    // width: 96
-    width: Dimensions.get("window").width / 4
-  },
+  // button: {
+  //   // width: 96
+  //   width: Dimensions.get("window").width / 4
+  // },
   input: {
     width: 50,
     textAlign: "center"
