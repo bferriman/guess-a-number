@@ -90,7 +90,7 @@ const GameScreen = props => {
     return (
       <View style={styles.screen}>
         <TitleText>Opponent's Guess</TitleText>
-        <View style={styles.controls}>
+        <View style={{...styles.controls, width: availableDeviceWidth > 350 ? "72%" : "80%"}}>
           <MainButton onPress={guessHandler.bind(this, "lower")}>
             <Ionicons name="caret-down" size={24} color="white" />
           </MainButton>
@@ -99,7 +99,7 @@ const GameScreen = props => {
             <Ionicons name="caret-up" size={24} color="white" />
           </MainButton>
         </View>
-        <View style={styles.listContainer}>
+        <View style={{...styles.listContainer, width: availableDeviceWidth > 350 ? "72%" : "80%"}}>
           {/* <ScrollView contentContainerStyle={styles.list}>
             {pastGuesses.map((guess, index) => renderListItem(guess, (pastGuesses.length - index)))}
           </ScrollView> */}
@@ -118,7 +118,7 @@ const GameScreen = props => {
     <View style={styles.screen}>
       <TitleText>Opponent's Guess</TitleText>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <Card style={styles.buttonContainer}>
+      <Card style={{...styles.buttonContainer, marginTop: availableDeviceHeight > 600 ? 20 : 5}}>
         <MainButton onPress={guessHandler.bind(this, "lower")}>
           <Ionicons name="caret-down" size={24} color="white" />
         </MainButton>
@@ -126,7 +126,7 @@ const GameScreen = props => {
           <Ionicons name="caret-up" size={24} color="white" />
         </MainButton>
       </Card>
-      <View style={styles.listContainer}>
+      <View style={{...styles.listContainer, width: availableDeviceWidth > 350 ? "72%" : "80%"}}>
         {/* <ScrollView contentContainerStyle={styles.list}>
           {pastGuesses.map((guess, index) => renderListItem(guess, (pastGuesses.length - index)))}
         </ScrollView> */}
@@ -150,20 +150,17 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: Dimensions.get("window").height > 600 ? 20 : 5,
     width: 400,
     maxWidth: "90%"
   },
   controls: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
-    width: Dimensions.get("window").width > 350 ? "72%" : "80%"
+    alignItems: "center"
   },
   listContainer: {
-    flex: 1,
+    flex: 1
     // width: "80%"
-    width: Dimensions.get("window").width > 350 ? "72%" : "80%"
   },
   list: {
     flexGrow: 1,
